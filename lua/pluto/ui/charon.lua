@@ -44,9 +44,11 @@ function Charon:land()
     else
         print("Oooops!! Someone is already there")
     end
+    vim.inspect(self.buf_id)
 end
 
 function Charon:takeOff()
+    vim.inspect(self.buf_id)
     if self.buf_id ~= nil then
         close_window(self.buf_id, self.win_id)
         self.buf_id = nil

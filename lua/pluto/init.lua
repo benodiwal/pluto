@@ -8,13 +8,19 @@ Pluto.__index = Pluto
 function Pluto:takeOff()
     local name = "TakeOff"
     local desc = "Heading towards Charon"
-    utils.create_user_command(name, charon.land, desc)
+    utils.create_user_command(name, function ()
+        charon:land()
+    end,
+    desc
+)
 end
 
 function Pluto:land()
     local name = "Land"
     local desc = "Heading back towards Pluto"
-    utils.create_user_command(name, charon.takeOff, desc)
+    utils.create_user_command(name, function ()
+        charon:takeOff()
+    end, desc)
 end
 
 function Pluto:setUpCommands()
