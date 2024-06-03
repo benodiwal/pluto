@@ -1,6 +1,5 @@
 # pluto
 
-Really Lost 😭😭😭
 
 **How to add this plugin to Neovim**:  
 ```
