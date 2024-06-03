@@ -36,6 +36,17 @@ local function close_window(buf_id, win_id)
     end
 end
 
+---@param win_id  number Window Id
+local function hide_window(win_id)
+    
+end
+
+---@param buf_id number Buffer Id
+---@param win_id number Buffer Id
+local function restore_window(buf_id, win_id)
+    
+end
+
 function Charon:land()
     if self.buf_id == nil then
         local buf_id, win_id = create_window()
@@ -44,17 +55,42 @@ function Charon:land()
     else
         print("Oooops!! Someone is already there")
     end
-    vim.inspect(self.buf_id)
 end
 
 function Charon:takeOff()
-    vim.inspect(self.buf_id)
     if self.buf_id ~= nil then
         close_window(self.buf_id, self.win_id)
         self.buf_id = nil
         self.win_id = nil
     else
         print("Huh? You are not on Charon !!")
+    end
+end
+
+function Charon:hide()
+    if self.win_id ~= nil and vim.api.nvim_win_is_valid(self.win_id) then
+        vim.api.nvim_win_hide(self.win_id)
+    end
+end
+
+function Charon:restore()
+    if self.buf_id ~= nil and vim.api.nvim_buf_is_valid(self.buf_id) then
+        if not (win_id ~= nil and vim.api.nvim_win_is_valid(self.win_id)) then
+            local width = math.floor(vim.o.columns * 0.8)
+            local height = math.floor(vim.o.lines * 0.8)
+            self.win_id = vim.api.nvim_open_win(self.buf_id, false, {
+                relative='editor',
+                row=math.floor((vim.o.lines - height) / 2),
+                col=math.floor((vim.o.columns - width) / 2),
+                height=height,
+                width=width,
+                border='rounded',
+                title='Charon',
+                title_pos='center',
+                style='minimal'
+            });
+        end
+        vim.api.nvim_set_current_win(self.win_id)
     end
 end
 

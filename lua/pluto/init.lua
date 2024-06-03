@@ -23,9 +23,27 @@ function Pluto:land()
     end, desc)
 end
 
+function Pluto:hide()
+    local name = "Hide"
+    local desc = "Hide Charon"
+    utils.create_user_command(name, function ()
+        charon:hide()
+    end, desc)
+end
+
+function Pluto:restore()
+    local name = "Restore"
+    local desc = "Restore Charon"
+    utils.create_user_command(name, function ()
+        charon:restore()
+    end, desc)
+end
+
 function Pluto:setUpCommands()
     self:takeOff()
     self:land()
+    self:hide()
+    self:restore()
 end
 
 ---@return Pluto
