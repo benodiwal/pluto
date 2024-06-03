@@ -1,7 +1,6 @@
 # pluto
 
-
-**How to add this plugin to Neovim**:  
+## **How to add this plugin to Neovim**:  
 ```
 $ git clone git@github.com:benodiwal/pluto.git
 ```
@@ -17,3 +16,33 @@ $ git clone git@github.com:benodiwal/pluto.git
         end
     }
  ```
+## **Usage**:  
+ **User Commands**:  
+ - **TakeOff**:
+   
+     ```
+     :TakeOff
+     ```
+     Create a new scratch buffer
+     
+ - **Land**:
+   
+    ```
+    :Land
+    ```
+    Quit the scratch buffer
+    
+ - **Hide**:
+   
+    ```
+    :Hide
+    ```
+    Hide the Window
+    
+ - **Restore**:
+   
+    ```
+    :Restore
+    ```
+
+    Restore the Window
