@@ -7,13 +7,16 @@ Charon.__index = Charon
 ---@return number buf_id Buffer Id
 ---@return number win_id Window Id
 local function create_window()
+    local width = math.floor(vim.o.columns * 0.8)
+    local height = math.floor(vim.o.lines * 0.8)
+
     local buf_id = vim.api.nvim_create_buf(false, true) -- A scratch buffer
     local win_id = vim.api.nvim_open_win(buf_id, false, {
         relative='editor',
-        row=10,
-        col=10,
-        height=vim.o.lines-20,
-        width=vim.o.columns-40,
+        row=math.floor((vim.o.lines - height) / 2),
+        col=math.floor((vim.o.columns - width) / 2),
+        height=height,
+        width=width,
         border='rounded',
         title='Charon',
         title_pos='center',
